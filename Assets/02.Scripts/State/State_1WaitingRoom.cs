@@ -11,7 +11,6 @@ namespace Yeon
         {
             base.Enter();
             Debug.Log("1번 시작");
-            //StateMachine.ChangeState(GetNextState());
         }
 
         public override void Execute()
@@ -29,6 +28,7 @@ namespace Yeon
         public override void OnClick()
         {
             Debug.Log("OnClick (State_1WatingRoom)");
+            StateMachine.ChangeState(GetNextState());
         }
 
         public override StateBase GetNextState()
