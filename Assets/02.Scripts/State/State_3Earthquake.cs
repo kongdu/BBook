@@ -16,6 +16,8 @@ namespace Yeon
         public override void Execute()
         {
             base.Execute();
+            var quaker = GameObject.Find("Quake").GetComponent<Quaker>();
+            quaker.StartQuake(3,quaker.magnitude,quaker.duration);
         }
 
         public override void Exit()
