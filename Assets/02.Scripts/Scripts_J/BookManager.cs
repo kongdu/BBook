@@ -41,11 +41,6 @@ public class BookManager : MonoBehaviour
         booksName = CSVReader.Read("LibraryEarthquakeBooksTitleCapitol");
     }
 
-    private void Start()
-    {
-        
-    }
-
     public void SetBooksProp(int colorVariety, int langVariety)
     {
         foreach (var item in bookShelfLines)
