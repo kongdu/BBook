@@ -9,7 +9,8 @@ using HTC.UnityPlugin.Vive;
 
 
 public class Controller1 : MonoBehaviour {
-
+    public enum Direction {NONE,RIGHT,LEFT}
+    public Direction dir = Direction.NONE;
     public HandRole handRole;
 
     public ControllerButton controllerButton;
@@ -30,24 +31,46 @@ public class Controller1 : MonoBehaviour {
 
     public GameObject dirRaycast;
 
+    void Startbutton()
+    {
+        if (reticlePoser.hitTarget.tag == "startbutton")
+            reticlePoser.hitTarget.SetActive(false);
+    }
+
+
     private void Update()
     {
+        if (StackManager.stack_list.Count != 0)
+            this.dirRaycast.SetActive(false);
+        else
+            this.dirRaycast.SetActive(true);
+
         //트리거 다운 할때
         if (ViveInput.GetPressDownEx(handRole, controllerButton))
         {
-            if (StackManager.stack_list.Count == 0 && 
-                reticlePoser.hitTarget == null ) return;
+
+            if (handRole == HandRole.RightHand)
+                dir = Direction.RIGHT;
+            if (handRole == HandRole.LeftHand)
+                dir = Direction.LEFT;
+
+
+
+
+
+            if (StackManager.stack_list.Count == 0 &&
+                reticlePoser.hitTarget == null) return;
 
             //스택에서 꺼내기 
             if (reticlePoser.hitTarget == null ||
-                StackManager.stack_list.Count > 0  &&
+                StackManager.stack_list.Count > 0 &&
                 reticlePoser.hitTarget.GetComponent<Book>().Stack_on)
             {
                 Tracking = true;
 
                 //(처리)
-               // HitBook = InputManager.book_stack_Transforms
-               //             [InputManager.book_stack_Transforms.Count - 1].gameObject;
+                // HitBook = InputManager.book_stack_Transforms
+                //             [InputManager.book_stack_Transforms.Count - 1].gameObject;
 
                 HitBook = StackManager.Stack_PoP(HitBook);
 
@@ -79,12 +102,17 @@ public class Controller1 : MonoBehaviour {
                 {
                     StackManager.stack_list.Remove(reticlePoser.hitTarget.transform);
                 }
-                
+
             }
         }
         //트리거 업
         if (ViveInput.GetPressUpEx(handRole, controllerButton))
         {
+            Startbutton();
+            if (StackManager.stack_list.Count == 0 &&
+                  reticlePoser.hitTarget == null) return;
+
+
             // if (HitBook == null || reticlePoser.hitTarget == null) return;
 
             //1. 다시 스택에 집어넣기 
@@ -96,7 +124,7 @@ public class Controller1 : MonoBehaviour {
             //4. 책장에 들어가있지 않다면 스택에 다시 넣기.
 
             //5. 스냅중이 라면 위치 각도 고정
-
+            dir = Direction.NONE;
 
             if (!HitBook.GetComponent<Book>().Snaped &&
                 StackManager.stack_list.Count < 5)
@@ -147,7 +175,7 @@ public class Controller1 : MonoBehaviour {
             HitBook = null;
             Tracking = false;
         }
-        
+
         Distance();
     }
 

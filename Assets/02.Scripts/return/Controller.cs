@@ -25,11 +25,18 @@ public class Controller : MonoBehaviour
     }
 
 
-
+    void Startbutton()
+    {
+        if (dir_Poser.hitTarget.tag == "startbutton")
+            dir_Poser.hitTarget.SetActive(false);
+    }
     private void Update()
     {
         if (ViveInput.GetPressDown(handRole, ControllerButton.Axis1))
         {
+            Startbutton();
+
+
             if (handRole == HandRole.RightHand)
                 dir = Direction.RIGHT;
             if (handRole == HandRole.LeftHand)

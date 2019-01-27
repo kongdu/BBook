@@ -5,9 +5,6 @@ using UnityEngine;
 public class Book_InvenStack : MonoBehaviour
 {
 
-    
-
-    public Transform bookshelf;
     // Start is called before the first frame update
     void Start()
     {

@@ -14,6 +14,7 @@ namespace Yeon
         public RectTransform upperPanel = null;
         public Button startButton = null;
 
+
         private void Awake()
         {
             if (instance == null)

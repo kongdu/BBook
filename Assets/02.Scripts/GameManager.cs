@@ -22,6 +22,9 @@ namespace Yeon
         //public static StateMachine stateMachine;
         //private Animator animator; //애니메이터로 상태머신 실습
 
+
+        private StateBase stateBase = null;
+
         private void Awake()
         {
             if (instance == null)
@@ -52,5 +55,21 @@ namespace Yeon
             Debug.Log("OnClick (GameManager)");
             StateMachine.OnClick();
         }
+
+        public void NEXT()
+        {
+           
+            stateBase.GetNextState();
+
+
+        }
+        public void Quit()
+        {
+            //2번씬 이동 
+            StateMachine.ChangeState(new State_2AnswerScene());
+        }
+
+
+
     }
 }
