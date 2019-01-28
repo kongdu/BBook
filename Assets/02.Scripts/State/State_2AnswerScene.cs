@@ -7,6 +7,8 @@ namespace Yeon
 {
     public class State_2AnswerScene : StateBase
     {
+        private float runningTime = 5f;
+
         public override void Enter()
         {
             base.Enter();
@@ -19,6 +21,11 @@ namespace Yeon
         {
             base.Execute();
             Debug.Log("2번 실행중...");
+            if (runningTime > 0)
+            {
+                runningTime -= Time.deltaTime;
+                RefCtr.instance.showTime.text = "Time : " + Mathf.Round(runningTime);
+            }
         }
 
         public override void Exit()

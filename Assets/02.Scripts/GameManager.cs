@@ -19,9 +19,7 @@ namespace Yeon
         //싱글턴을 위해 객체선언
         public static GameManager instance = null;
 
-        //public static StateMachine stateMachine;
-        //private Animator animator; //애니메이터로 상태머신 실습
-
+        public GameState gameState;  //열거형 변수
 
         private StateBase stateBase = null;
 
@@ -36,7 +34,6 @@ namespace Yeon
                 Destroy(this.gameObject);
             }
 
-            // animator = GetComponent<Animator>();
             StateMachine.ChangeState(new State_1WaitingRoom());
         }
 
@@ -58,18 +55,13 @@ namespace Yeon
 
         public void NEXT()
         {
-           
             stateBase.GetNextState();
-
-
         }
+
         public void Quit()
         {
-            //2번씬 이동 
+            //2번씬 이동
             StateMachine.ChangeState(new State_2AnswerScene());
         }
-
-
-
     }
 }
