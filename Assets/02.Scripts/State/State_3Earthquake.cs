@@ -17,7 +17,9 @@ namespace Yeon
         {
             base.Execute();
             var quaker = GameObject.Find("Quake").GetComponent<Quaker>();
-            quaker.StartQuake(3,quaker.magnitude,quaker.duration);
+            var booksToDrop = (int)(StageManager.Instance.stageData[StageManager.Instance.stage]["DropBooks"]);
+            quaker.StartQuake(booksToDrop, quaker.magnitude, quaker.duration);
+
         }
 
         public override void Exit()

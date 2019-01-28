@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Book : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Book : MonoBehaviour
     public static event Book_delegate Book_Event;
     public int bookNumber = 0;
     public bool Snaped = false;
+     public Text title = null;
+    public MeshRenderer _mesh;
+
 
 
     public bool Stack_on = false;
@@ -54,6 +58,16 @@ public class Book : MonoBehaviour
             result = 1;
         }
         return result;
+    }
+
+    public void SetText(string newTitle)
+    {
+        title.text = newTitle;
+    }
+
+    public void SetColor(Color color)
+    {
+        _mesh.material.color = color;
     }
 
     //private void OnTriggerExit(Collider other)

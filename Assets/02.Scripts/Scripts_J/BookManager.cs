@@ -56,7 +56,7 @@ public class BookManager : MonoBehaviour
         {
             item.SetBooksColor(colors[Random.Range(0, 4)]);
             item.SetBooksName(Language[Random.Range(0, 2)]);
-            item.MemoPos();
+            //item.MemoPos();
         }
     }
 }

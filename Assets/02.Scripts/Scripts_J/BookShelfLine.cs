@@ -7,7 +7,7 @@ public class BookShelfLine : MonoBehaviour
 {
     
     public float totalBooks = 20;
-    public List<Book_J> books = new List<Book_J>();
+    public List<Book> books = new List<Book>();
     
 
     // Start is called before the first frame update
@@ -40,11 +40,11 @@ public class BookShelfLine : MonoBehaviour
         }
     }
 
-    public void MemoPos()
-    {
-        foreach (var item in books)
-        {
-            item.MemorizePos();
-        }
-    }
+    //public void MemoPos()
+    //{
+    //    foreach (var item in books)
+    //    {
+    //        item.MemorizePos();
+    //    }
+    //}
 }
