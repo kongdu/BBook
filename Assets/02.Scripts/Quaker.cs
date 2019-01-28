@@ -46,7 +46,7 @@ public class Quaker : MonoBehaviour
             originPos_books.Add(AllbooksRigidBody[i].transform.localPosition);
         }
 
-        StartQuake(dropbooks, magnitude, duration);
+        //StartQuake(dropbooks, magnitude, duration);
     }
 
     public void StartQuake(int dropbooks, float magnitude, float duration)
@@ -140,6 +140,7 @@ public class Quaker : MonoBehaviour
             booknum.enabled = true;
             booknum.bookNumber = i;
             AllbooksRigidBody[i].AddForce(Vector3.forward * -randompower);
+            AllbooksRigidBody[i].gameObject.layer = 10;
             GameObject.Instantiate(bookcasePreFab, booknum.transform);
         }
 
