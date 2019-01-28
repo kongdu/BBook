@@ -12,6 +12,8 @@ namespace Yeon
         public override void Enter()
         {
             base.Enter();
+            RefCtr.instance.showTime.gameObject.SetActive(false);
+            RefCtr.instance.noticelPanel.gameObject.SetActive(true);
 
             Debug.Log("3번 시작");
             Debug.Log("3번");
