@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Quaker : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class Quaker : MonoBehaviour
 
     public GameObject AllBooks;
     public GameObject bookcase;
+
+    public event Action OnCompleted = () => { };
 
     //public Quaker(int dropBooks, float magnitude, float duration)
     //{
@@ -53,15 +57,18 @@ public class Quaker : MonoBehaviour
     private IEnumerator QuakeSequence(float magnitude, float time, int dropbooks)
     {
         audiosource.Play();
-        StartCoroutine(ShakingBookcase(magnitude));
-        yield return new WaitForSeconds(3f);
+        yield return StartCoroutine(ShakingBookcase(magnitude));
+
         DustParticle.Play();
-        //yield return new WaitForSeconds(2f);
-        yield return new WaitForSeconds(3.5f);
-        StartCoroutine(ShakingBooks(magnitude));
-        StartCoroutine(ShakingCam());
-        yield return new WaitForSeconds(2.5f);
-        StartCoroutine(DropingBooks(dropbooks));
+        yield return new WaitWhile(() => DustParticle.isPlaying);
+
+        yield return StartCoroutine(ShakingBooks(magnitude));
+
+        yield return StartCoroutine(ShakingCam());
+
+        yield return StartCoroutine(DropingBooks(dropbooks));
+
+        OnCompleted();
     }
 
     private IEnumerator ShakingBookcase(float magnitude)
@@ -109,8 +116,7 @@ public class Quaker : MonoBehaviour
         {
             randomvaluelist.Add(Random.Range(0, AllbooksRigidBody.Length + 1));
         }
-        randomvaluelist.Sort((t1, t2) => { return Random.Range(-1, 2); }
-        );
+        randomvaluelist.Sort((t1, t2) => { return Random.Range(-1, 2); });
 
         //for(int i = 0; i < randomvaluelist.Count - 1; i++)
         //{
@@ -128,7 +134,7 @@ public class Quaker : MonoBehaviour
         for (int i = 0; i < randomvaluelist.Count; i++)
         {
             float randompower = Random.Range(140f, 240f);
-            
+
             var booknum = AllbooksRigidBody[i].GetComponent<Book>();
             //될지 안될지 모르겠음 이건 모두 꺼놓고 얘만 킬라고 한거임
             booknum.enabled = true;

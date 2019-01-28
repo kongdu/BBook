@@ -5,22 +5,23 @@ using UnityEngine;
 public class Book : MonoBehaviour
 {
     public delegate void Book_delegate();
+
     public static event Book_delegate Book_Event;
+
     public int bookNumber = 0;
     public bool Snaped = false;
-
 
     public bool Stack_on = false;
 
     public GameObject other;
 
-    IEnumerator Book_SNAP()
+    private IEnumerator Book_SNAP()
     {
         Snaped = true;
         yield return null;
     }
 
-    IEnumerator Book_SNAP2()
+    private IEnumerator Book_SNAP2()
     {
         Snaped = false;
         yield return null;
@@ -39,17 +40,16 @@ public class Book : MonoBehaviour
         chkscore = other.gameObject.GetComponent<Book_Sh>().shelfNum;
         if (other.CompareTag("bookshelf"))
         {
-            
             StartCoroutine(Book_SNAP());
             this.other = other.gameObject;
             //transform.SetParent(other.transform);
         }
     }
-    
+
     public int Scorechking()
     {
         int result = 0;
-        if (chkscore==this.bookNumber)
+        if (chkscore == this.bookNumber)
         {
             result = 1;
         }
@@ -63,6 +63,4 @@ public class Book : MonoBehaviour
     //        StartCoroutine(Book_SNAP2());
     //    }
     //}
-
-
 }
