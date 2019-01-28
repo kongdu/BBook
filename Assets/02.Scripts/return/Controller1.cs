@@ -43,7 +43,7 @@ public class Controller1 : MonoBehaviour {
 
     private void Update()
     {
-        if (TriggerControll)
+        //if (TriggerControll)
         {
             if (StackManager.stack_list.Count != 0)
                 this.dirRaycast.SetActive(false);

@@ -75,6 +75,7 @@ public class Book : MonoBehaviour
     public void OutlinerOn()
     {
         _outline.enabled = true;
+        //다른 책들에 이벤트 발생, 외각선 끄기.
     }
 
     public void OutlinerOff()

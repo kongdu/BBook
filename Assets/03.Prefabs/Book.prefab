@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 1370997443253956444}
   - component: {fileID: 4145516006289368385}
   - component: {fileID: 2316678217393242567}
-  - component: {fileID: 3684628904444906347}
   - component: {fileID: 5198340641118122285}
   m_Layer: 0
   m_Name: Book
@@ -370,21 +369,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3684628904444906347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5500347843427606126}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 1, g: 0.9976226, b: 0.2028302, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!114 &5198340641118122285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +385,7 @@ MonoBehaviour:
   Snaped: 0
   title: {fileID: 3026087934563154411}
   _mesh: {fileID: 1815292669238489014}
-  _outline: {fileID: 3684628904444906347}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!1 &8771389027108544835
