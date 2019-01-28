@@ -19,14 +19,8 @@ public class Book : MonoBehaviour
     public bool Stack_on = false;
 
     public GameObject other;
-<<<<<<< HEAD
 
     private IEnumerator Book_SNAP()
-=======
-    
-    
-    IEnumerator Book_SNAP()
->>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
     {
         Snaped = true;
         yield return null;
@@ -48,9 +42,9 @@ public class Book : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        chkscore = other.gameObject.GetComponent<Book_Sh>().shelfNum;
         if (other.CompareTag("bookshelf"))
         {
+            chkscore = other.gameObject.GetComponent<Book_Sh>().shelfNum;
             StartCoroutine(Book_SNAP());
             this.other = other.gameObject;
             //transform.SetParent(other.transform);
