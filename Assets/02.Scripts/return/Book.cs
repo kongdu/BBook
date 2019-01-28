@@ -19,14 +19,13 @@ public class Book : MonoBehaviour
     public bool Stack_on = false;
 
     public GameObject other;
-<<<<<<< HEAD
 
-    private IEnumerator Book_SNAP()
-=======
-    
-    
+    private void Awake()
+    {
+        _outline = GetComponent<Outline>();
+    }
+
     IEnumerator Book_SNAP()
->>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
     {
         Snaped = true;
         yield return null;
@@ -80,7 +79,7 @@ public class Book : MonoBehaviour
     public void OutlinerOn()
     {
         _outline.enabled = true;
-        //다른 책들에 이벤트 발생, 외각선 끄기.
+        //다른 책들에 외각선 끄기 이벤트 발생.
     }
 
     public void OutlinerOff()
