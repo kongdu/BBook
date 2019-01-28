@@ -9,12 +9,20 @@ namespace Yeon
     {
         private Quaker quaker = null;
 
+        public override void Enter()
+        {
+            base.Enter();
+
+            Debug.Log("3번 시작");
+            Debug.Log("3번");
+            StateMachine.ChangeState(GetNextState());
+        }
+
         public override void Execute()
         {
             base.Execute();
 
             Debug.Log("3번 실행중...");
-
             var quaker = GameObject.Find("Quake").GetComponent<Quaker>();
             var booksToDrop = (int)(StageManager.Instance.stageData[StageManager.Instance.stage]["DropBooks"]);
             quaker.StartQuake(booksToDrop, quaker.magnitude, quaker.duration);

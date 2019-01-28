@@ -25,7 +25,7 @@ public class Book : MonoBehaviour
         _outline = GetComponent<Outline>();
     }
 
-    IEnumerator Book_SNAP()
+    private IEnumerator Book_SNAP()
     {
         Snaped = true;
         yield return null;
@@ -47,9 +47,9 @@ public class Book : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        chkscore = other.gameObject.GetComponent<Book_Sh>().shelfNum;
         if (other.CompareTag("bookshelf"))
         {
+            chkscore = other.gameObject.GetComponent<Book_Sh>().shelfNum;
             StartCoroutine(Book_SNAP());
             this.other = other.gameObject;
             //transform.SetParent(other.transform);

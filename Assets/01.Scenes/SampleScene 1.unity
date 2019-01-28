@@ -3169,6 +3169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e5546700cf0f94093de11979e4e2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
 --- !u!4 &1505186088
 Transform:
   m_ObjectHideFlags: 0
@@ -3195,8 +3196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb87198ba5ff8654784c32ad5abc0a98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upperPanel: {fileID: 0}
   startButton: {fileID: 957852848}
+  showTime: {fileID: 0}
+  noticelPanel: {fileID: 0}
+  playingPanel: {fileID: 0}
+  winPanel: {fileID: 0}
+  losePanel: {fileID: 0}
 --- !u!1 &1551769757
 GameObject:
   m_ObjectHideFlags: 0
@@ -3697,6 +3702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e5546700cf0f94093de11979e4e2b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameState: 0
 --- !u!1 &2043578766
 GameObject:
   m_ObjectHideFlags: 0

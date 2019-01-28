@@ -175,7 +175,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!65 &22823137
@@ -249,6 +253,7 @@ GameObject:
   - component: {fileID: 40157536}
   - component: {fileID: 40157535}
   - component: {fileID: 40157534}
+  - component: {fileID: 40157538}
   m_Layer: 0
   m_Name: Book_sh
   m_TagString: bookshelf
@@ -344,6 +349,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40157532}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &40157538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40157532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b570946a0888c549aa23628c54274f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfNum: 0
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +444,7 @@ GameObject:
   - component: {fileID: 173900085}
   - component: {fileID: 173900084}
   - component: {fileID: 173900083}
+  - component: {fileID: 173900087}
   m_Layer: 0
   m_Name: Book_sh
   m_TagString: bookshelf
@@ -521,6 +540,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 173900081}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &173900087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173900081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b570946a0888c549aa23628c54274f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfNum: 0
 --- !u!1 &179579657
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +616,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!65 &179579662
@@ -812,7 +848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!1 &373193301
@@ -936,7 +976,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!1 &444959543
@@ -1060,7 +1104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!1 &629748952
@@ -1076,6 +1124,7 @@ GameObject:
   - component: {fileID: 629748956}
   - component: {fileID: 629748955}
   - component: {fileID: 629748954}
+  - component: {fileID: 629748958}
   m_Layer: 0
   m_Name: Book_sh
   m_TagString: bookshelf
@@ -1171,6 +1220,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 629748952}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &629748958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629748952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b570946a0888c549aa23628c54274f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfNum: 0
 --- !u!1 &826168198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1354,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!1 &854952861
@@ -1358,7 +1424,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!65 &854952866
@@ -1432,6 +1502,7 @@ GameObject:
   - component: {fileID: 967323739}
   - component: {fileID: 967323738}
   - component: {fileID: 967323741}
+  - component: {fileID: 967323742}
   m_Layer: 0
   m_Name: Book_sh
   m_TagString: bookshelf
@@ -1527,6 +1598,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &967323742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 967323736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b570946a0888c549aa23628c54274f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfNum: 0
 --- !u!1 &1065981135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1540,6 +1624,7 @@ GameObject:
   - component: {fileID: 1065981139}
   - component: {fileID: 1065981138}
   - component: {fileID: 1065981137}
+  - component: {fileID: 1065981141}
   m_Layer: 0
   m_Name: Book_sh
   m_TagString: bookshelf
@@ -1635,6 +1720,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065981135}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1065981141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065981135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b570946a0888c549aa23628c54274f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shelfNum: 0
 --- !u!1 &1102884323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,7 +1796,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!65 &1102884328
@@ -1880,7 +1982,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!1 &1292685767
@@ -2038,7 +2144,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc22403777d87c844813fe24554786b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bookNumber: 0
   Snaped: 0
+  title: {fileID: 0}
+  _mesh: {fileID: 0}
+  _outline: {fileID: 0}
   Stack_on: 0
   other: {fileID: 0}
 --- !u!65 &1415171662
@@ -2166,11 +2276,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4142876065577306039, guid: 0bb60e86e7b9dbf48844c68a95236ea9,
-        type: 3}
-      propertyPath: bookshelf
-      value: 
-      objectReference: {fileID: 967323737}
     - target: {fileID: 4142876064625387767, guid: 0bb60e86e7b9dbf48844c68a95236ea9,
         type: 3}
       propertyPath: OriginParent
@@ -2181,5 +2286,10 @@ PrefabInstance:
       propertyPath: OriginParent
       value: 
       objectReference: {fileID: 255387228}
+    - target: {fileID: 4142876065577306039, guid: 0bb60e86e7b9dbf48844c68a95236ea9,
+        type: 3}
+      propertyPath: bookshelf
+      value: 
+      objectReference: {fileID: 967323737}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0bb60e86e7b9dbf48844c68a95236ea9, type: 3}
