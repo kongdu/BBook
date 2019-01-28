@@ -17,6 +17,9 @@ namespace Yeon
         {
             base.Enter();
             Debug.Log("4번");
+            RefCtr.instance.noticelPanel.gameObject.SetActive(false);
+            RefCtr.instance.playingPanel.gameObject.SetActive(true);
+
             Controller1.TriggerControll = true;
             StateMachine.ChangeState(GetNextState());
             Debug.Log("4번 시작");

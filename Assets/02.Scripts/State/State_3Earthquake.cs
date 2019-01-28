@@ -12,6 +12,8 @@ namespace Yeon
         public override void Enter()
         {
             base.Enter();
+            RefCtr.instance.showTime.gameObject.SetActive(false);
+            RefCtr.instance.noticelPanel.gameObject.SetActive(true);
 
             quaker = GameObject.Find("Quake").GetComponent<Quaker>();
             quaker.OnCompleted += OnCompleted;

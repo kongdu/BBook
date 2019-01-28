@@ -7,32 +7,34 @@ namespace Yeon
 {
     public class State_5GameResult : StateBase
     {
-       
-
-        
-
-        public void ResultGame(bool Win)
+        public void ResultGame(bool win)
         {
-            if (Win) StateMachine.result = GameResult.WIN;
-            else if (!Win) StateMachine.result = GameResult.LOSE;
-
+            if (win)
+            {
+                //StateMachine.result = GameResult.WIN;
+                RefCtr.instance.winPanel.gameObject.SetActive(true);
+            }
+            else if (!win)
+            {
+                //StateMachine.result = GameResult.LOSE;
+                RefCtr.instance.losePanel.gameObject.SetActive(true);
+            }
             Debug.Log("WIn");
         }
-
-
 
         public override void Enter()
         {
             base.Enter();
+            RefCtr.instance.playingPanel.gameObject.SetActive(false);
+
             ResultGame(true);
             Debug.Log("5번");
-          //  StateMachine.ChangeState(GetNextState());
+            //StateMachine.ChangeState(GetNextState());
         }
 
         public override void Execute()
         {
             base.Execute();
-           
         }
 
         public override void Exit()
@@ -42,7 +44,7 @@ namespace Yeon
 
         public override StateBase GetNextState()
         {
-           return new State_6Ranking();
+            return new State_6Ranking();
         }
     }
 }

@@ -12,8 +12,9 @@ namespace Yeon
         public override void Enter()
         {
             base.Enter();
-
             Debug.Log("2번 시작");
+            RefCtr.instance.startButton.gameObject.SetActive(false);
+            RefCtr.instance.showTime.gameObject.SetActive(true);
         }
 
         public override void Execute()
