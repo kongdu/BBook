@@ -29,7 +29,7 @@ namespace Yeon
             Debug.Log("4번 실행중...");
             var score = GameObject.Find("ScoreCheck").GetComponent<ScoreCheck>();
 
-            if (totalTime > 0)
+            if (StageManager.Instance.deadline > 0)
             {
                 totalTime -= Time.deltaTime;
                 RefCtr.instance.timer.text = Mathf.Round(totalTime) + "";
