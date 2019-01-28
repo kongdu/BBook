@@ -12,17 +12,17 @@ public class Book : MonoBehaviour
 
     public int bookNumber = 0;
     public bool Snaped = false;
-     public Text title = null;
+    public Text title = null;
     public MeshRenderer _mesh;
-    public Outline _outline;
-
+    public cakeslice.Outline _outline;
     public bool Stack_on = false;
+    public bool outlineOn = false;
 
     public GameObject other;
 
-    private void Awake()
+    private void Start()
     {
-        _outline = GetComponent<Outline>();
+        _outline.enabled = false;
     }
 
     private IEnumerator Book_SNAP()
@@ -78,13 +78,14 @@ public class Book : MonoBehaviour
 
     public void OutlinerOn()
     {
-        _outline.enabled = true;
-        //다른 책들에 외각선 끄기 이벤트 발생.
+        if(gameObject.layer == 10)
+            _outline.enabled = true;
     }
 
     public void OutlinerOff()
     {
-        _outline.enabled = false;
+        if (gameObject.layer == 10)
+            _outline.enabled = false;
     }
 
     //private void OnTriggerExit(Collider other)

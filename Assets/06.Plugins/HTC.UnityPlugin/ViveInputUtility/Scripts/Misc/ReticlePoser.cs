@@ -68,9 +68,7 @@ public class ReticlePoser : MonoBehaviour
             }
 
             hitTarget = result.gameObject;
-            hitTarget.SendMessage("OutlinerOn", SendMessageOptions.RequireReceiver);
             hitDistance = result.distance;
-
         }
         else
         {

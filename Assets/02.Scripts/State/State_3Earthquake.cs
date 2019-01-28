@@ -15,6 +15,10 @@ namespace Yeon
 
             Debug.Log("3번 시작");
             Debug.Log("3번");
+
+            var quaker = GameObject.Find("Quake").GetComponent<Quaker>();
+            var booksToDrop = (int)(StageManager.Instance.stageData[StageManager.Instance.stage]["DropBooks"]);
+            quaker.StartQuake(booksToDrop, quaker.magnitude, quaker.duration);
             StateMachine.ChangeState(GetNextState());
         }
 
@@ -23,9 +27,6 @@ namespace Yeon
             base.Execute();
 
             Debug.Log("3번 실행중...");
-            var quaker = GameObject.Find("Quake").GetComponent<Quaker>();
-            var booksToDrop = (int)(StageManager.Instance.stageData[StageManager.Instance.stage]["DropBooks"]);
-            quaker.StartQuake(booksToDrop, quaker.magnitude, quaker.duration);
         }
 
         public override void Exit()
