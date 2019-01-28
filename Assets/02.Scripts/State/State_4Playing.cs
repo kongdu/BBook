@@ -19,11 +19,13 @@ namespace Yeon
             Debug.Log("4번");
             Controller1.TriggerControll = true;
             StateMachine.ChangeState(GetNextState());
+            Debug.Log("4번 시작");
         }
 
         public override void Execute()
         {
             base.Execute();
+            Debug.Log("4번 실행중...");
             var score = GameObject.Find("ScoreCheck").GetComponent<ScoreCheck>();
             if (score.CheckingNextState(time) == true)
             {

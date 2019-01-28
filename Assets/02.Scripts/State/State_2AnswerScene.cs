@@ -14,7 +14,6 @@ namespace Yeon
             base.Enter();
 
             Debug.Log("2번 시작");
-            StateMachine.ChangeState(GetNextState());
         }
 
         public override void Execute()
@@ -25,6 +24,10 @@ namespace Yeon
             {
                 runningTime -= Time.deltaTime;
                 RefCtr.instance.showTime.text = "Time : " + Mathf.Round(runningTime);
+            }
+            else
+            {
+                StateMachine.ChangeState(GetNextState());
             }
         }
 
