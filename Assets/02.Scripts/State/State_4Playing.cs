@@ -16,6 +16,8 @@ namespace Yeon
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("4번");
+            Controller1.TriggerControll = true;
             StateMachine.ChangeState(GetNextState());
         }
 

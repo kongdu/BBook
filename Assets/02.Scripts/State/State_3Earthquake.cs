@@ -10,6 +10,7 @@ namespace Yeon
         public override void Enter()
         {
             base.Enter();
+            Debug.Log("3번");
             StateMachine.ChangeState(GetNextState());
         }
 
