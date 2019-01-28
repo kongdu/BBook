@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Book : MonoBehaviour
 {
@@ -11,13 +12,14 @@ public class Book : MonoBehaviour
     public bool Snaped = false;
      public Text title = null;
     public MeshRenderer _mesh;
-
+    public Outline _outline;
 
 
     public bool Stack_on = false;
 
     public GameObject other;
-
+    
+    
     IEnumerator Book_SNAP()
     {
         Snaped = true;
@@ -68,6 +70,16 @@ public class Book : MonoBehaviour
     public void SetColor(Color color)
     {
         _mesh.material.color = color;
+    }
+
+    public void OutlinerOn()
+    {
+        _outline.enabled = true;
+    }
+
+    public void OutlinerOff()
+    {
+        _outline.enabled = false;
     }
 
     //private void OnTriggerExit(Collider other)
