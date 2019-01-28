@@ -55,7 +55,7 @@ namespace Yeon
 
         public void NEXT()
         {
-            stateBase.GetNextState();
+            StateMachine.NextState();
         }
 
         public void Quit()

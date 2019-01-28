@@ -1332,7 +1332,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 442972493}
   m_CullTransparentMesh: 0
+<<<<<<< HEAD
 --- !u!1 &446936417
+=======
+--- !u!1 &446097385
+>>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1340,16 +1344,24 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 446936418}
   - component: {fileID: 446936420}
   - component: {fileID: 446936419}
   m_Layer: 5
   m_Name: Text
+=======
+  - component: {fileID: 446097387}
+  - component: {fileID: 446097386}
+  m_Layer: 0
+  m_Name: BookManager
+>>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!224 &446936418
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1370,11 +1382,15 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446936419
+=======
+--- !u!114 &446097386
+>>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 446936417}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1405,12 +1421,55 @@ MonoBehaviour:
   m_Text: OK
 --- !u!222 &446936420
 CanvasRenderer:
+=======
+  m_GameObject: {fileID: 446097385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21b247dfdde3e0349882228623028ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  - {r: 0.8, g: 0.4, b: 0, a: 1}
+  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  - {r: 1, g: 0.4, b: 1, a: 1}
+  Language:
+  - Korean
+  - English
+  - Chinese
+  - Japanese
+  - Greek
+  - Russian
+  - Arabian
+  - Mongolian
+  correctDist: 0.1
+  correctRot: 10
+  titleVariety: 21
+  bookShelfLines: []
+--- !u!4 &446097387
+Transform:
+>>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 446936417}
   m_CullTransparentMesh: 0
+=======
+  m_GameObject: {fileID: 446097385}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
 --- !u!1 &482449120
 GameObject:
   m_ObjectHideFlags: 0
@@ -4187,6 +4246,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010553278}
   m_CullTransparentMesh: 0
+--- !u!1 &2023438546
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2023438548}
+  - component: {fileID: 2023438547}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2023438547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023438546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6c52acb57fa0e044a098316ce6fd121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeText: {fileID: 0}
+  scoreText: {fileID: 0}
+  announcePanel: {fileID: 0}
+  announceTime: 5
+  deadline: 20
+  scorePerTime: 10
+  scorePerStage: 2
+  stage: 1
+  booksToClear: 0
+--- !u!4 &2023438548
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2023438546}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2043578766
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class Book : MonoBehaviour
 {
@@ -10,12 +12,21 @@ public class Book : MonoBehaviour
 
     public int bookNumber = 0;
     public bool Snaped = false;
+     public Text title = null;
+    public MeshRenderer _mesh;
+    public Outline _outline;
 
     public bool Stack_on = false;
 
     public GameObject other;
+<<<<<<< HEAD
 
     private IEnumerator Book_SNAP()
+=======
+    
+    
+    IEnumerator Book_SNAP()
+>>>>>>> 142b41db31560c00ef1a05f5243402c2bac641b4
     {
         Snaped = true;
         yield return null;
@@ -54,6 +65,26 @@ public class Book : MonoBehaviour
             result = 1;
         }
         return result;
+    }
+
+    public void SetText(string newTitle)
+    {
+        title.text = newTitle;
+    }
+
+    public void SetColor(Color color)
+    {
+        _mesh.material.color = color;
+    }
+
+    public void OutlinerOn()
+    {
+        _outline.enabled = true;
+    }
+
+    public void OutlinerOff()
+    {
+        _outline.enabled = false;
     }
 
     //private void OnTriggerExit(Collider other)

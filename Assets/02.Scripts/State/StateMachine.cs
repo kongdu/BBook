@@ -8,6 +8,8 @@ namespace Yeon
     //현재상태를 저장하고 업데이트 해주는 클래스
     public class StateMachine
     {
+        public GameState gameState;  //열거형 변수
+        public static GameResult result = GameResult.NONE;
         private static StateBase currentState = null; //현재상태 저장할 변수
 
         public static void OnClick()
@@ -42,7 +44,7 @@ namespace Yeon
         }
 
         //다음 상태를 업데이트 해주는 ChangeState 메소드가 있으니까 일단 없어도될 것 같은 메소드
-        public void NextState()
+        public static void NextState()
         {
             if (currentState == null)
                 return;
