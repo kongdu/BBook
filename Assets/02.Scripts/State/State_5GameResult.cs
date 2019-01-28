@@ -27,7 +27,7 @@ namespace Yeon
             base.Enter();
             RefCtr.instance.playingPanel.gameObject.SetActive(false);
 
-            ResultGame(true);
+            ResultGame(State_4Playing.isGameOver);
             Debug.Log("5번");
             //StateMachine.ChangeState(GetNextState());
         }

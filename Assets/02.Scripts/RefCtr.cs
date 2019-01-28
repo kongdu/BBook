@@ -16,6 +16,7 @@ namespace Yeon
         public Text showTime = null; // 상태2. 정답 보여주는 시간 텍스트
         public RectTransform noticelPanel = null; //상태3. 지진경보 경고 패널
         public RectTransform playingPanel = null; //상태4. (타이머 + 정답개수)패널
+        public Text timer = null; //상태 4. (타이머)
         public RectTransform winPanel = null; //상태5. 이겼을때
         public RectTransform losePanel = null;  //상태5. 졌을때
 

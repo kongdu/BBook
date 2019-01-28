@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //4 플레이
 namespace Yeon
@@ -8,7 +9,7 @@ namespace Yeon
     public class State_4Playing : StateBase
     {
         private float totalTime = 20f;
-        private bool isGameOver = false;
+        public static bool isGameOver = false;
 
         public override void Enter()
         {
@@ -28,13 +29,15 @@ namespace Yeon
             Debug.Log("4번 실행중...");
             var score = GameObject.Find("ScoreCheck").GetComponent<ScoreCheck>();
 
-            if (!isGameOver && totalTime > 0)
+            if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
-                RefCtr.instance.showTime.text = Mathf.Round(totalTime) + "";
+                RefCtr.instance.timer.text = Mathf.Round(totalTime) + "";
+                //TO DO : 클리어조건 i) 빈공간 모두 채우면
             }
             else
             {
+                isGameOver = !isGameOver;
                 StateMachine.ChangeState(GetNextState());
             }
         }
