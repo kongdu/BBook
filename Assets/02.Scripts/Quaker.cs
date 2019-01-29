@@ -18,6 +18,7 @@ public class Quaker : MonoBehaviour
 
     private Vector3 originPos_bookcase;
     public List<Transform> AllBooksTransform;
+    public List<GameObject> Slotlist;
     private List<Vector3> originPos_books;
     public Rigidbody[] AllbooksRigidBody;
 
@@ -45,13 +46,14 @@ public class Quaker : MonoBehaviour
             AllBooksTransform.Add(AllbooksRigidBody[i].gameObject.GetComponent<Transform>());
             originPos_books.Add(AllbooksRigidBody[i].transform.localPosition);
         }
-
+        Slotlist = new List<GameObject>();
         //StartQuake(dropbooks, magnitude, duration);
     }
 
     public void StartQuake(int dropbooks, float magnitude, float duration)
     {
         Debug.Log("StartCoroutine(QuakeSequence)");
+
         StartCoroutine(QuakeSequence(magnitude, duration, dropbooks));
     }
 
@@ -147,7 +149,7 @@ public class Quaker : MonoBehaviour
             booknum.bookNumber = i;
             AllbooksRigidBody[i].AddForce(Vector3.forward * -randompower);
             AllbooksRigidBody[i].gameObject.layer = 10;
-            GameObject.Instantiate(bookcasePreFab, booknum.transform);
+            //GameObject.Instantiate(bookcasePreFab, originPos_books[i], Quaternion.identity);
         }
 
         yield return null;
