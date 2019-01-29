@@ -22,6 +22,7 @@ namespace Yeon
             Controller1.TriggerControll = true;
             //StateMachine.ChangeState(GetNextState());
             Debug.Log("4번 시작");
+            Resultcounting();
         }
 
         public override void Execute()
@@ -46,25 +47,26 @@ namespace Yeon
 
         public override void Exit()
         {
-            var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
-            var book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
-            book_list.AddRange(OBJS);
-
-            var ResultCnt = from slot in book_list
-                            where slot.GetComponent<Book_Sh>().shelfNum == slot.GetComponent<Book_Sh>().Book_Check
-                            select slot;
-
-            int count = ResultCnt.Count();
-
-
-
-
             base.Exit();
         }
 
         public override StateBase GetNextState()
         {
             return new State_5GameResult();
+        }
+
+        public void Resultcounting()
+        {
+            //var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
+            var book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
+            //book_list.AddRange(OBJS);
+
+            var ResultCnt = from slot in book_list
+                            where slot.GetComponent<Book_Sh>().shelfNum == slot.GetComponent<Book_Sh>().Book_Check
+                            select slot;
+
+            int count = ResultCnt.Count();
+            Debug.Log(count);
         }
     }
 }
