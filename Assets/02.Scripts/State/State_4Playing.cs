@@ -19,7 +19,7 @@ namespace Yeon
             RefCtr.instance.playingPanel.gameObject.SetActive(true);
 
             Controller1.TriggerControll = true;
-            StateMachine.ChangeState(GetNextState());
+            //StateMachine.ChangeState(GetNextState());
             Debug.Log("4번 시작");
         }
 
