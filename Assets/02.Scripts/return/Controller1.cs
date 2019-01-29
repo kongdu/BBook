@@ -83,7 +83,8 @@ public class Controller1 : MonoBehaviour {
                     HitBook.transform.position =
                                 HandTransform.position + HandTransform.transform.forward * 0.2f;
 
-                    HitBook.transform.localRotation = Quaternion.Euler(0, 0, 0);
+                    //HitBook.transform.localRotation = Quaternion.Euler(0, -90, 0);
+                    HitBook.transform.localRotation = Quaternion.Euler(Vector3.up * -90.0f);
 
                     HitBook.GetComponent<Book>().Stack_on = false;
 
@@ -165,7 +166,7 @@ public class Controller1 : MonoBehaviour {
 
                     HitBook.transform.SetParent(Stack_Direction_book);
 
-                    HitBook.transform.rotation = Quaternion.Euler(0, 0, 90.0f);
+                    HitBook.transform.localRotation = Quaternion.Euler(new Vector3(90.0f,0,180.0f));
 
                     Rigidbody rd = HitBook.GetComponent<Rigidbody>();
                     rd.constraints = RigidbodyConstraints.FreezeAll;
@@ -198,7 +199,6 @@ public class Controller1 : MonoBehaviour {
             }
 
             Distance();
-           // HitBook.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -219,12 +219,13 @@ public class Controller1 : MonoBehaviour {
             //책의 부모를 반대쪽 손으로 변경
             HitBook.transform.SetParent(HandTransform);
             //책의 각도를 변경
-            HitBook.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            //HitBook.transform.localRotation = Quaternion.Euler(Vector3.zero);
+            HitBook.transform.localRotation = Quaternion.Euler(Vector3.up * -90.0f);
             //책을 이동 시킴.
             yield return StartCoroutine(Tracking_OBJ());
 
             
-            Rigidbody rd = HitBook.AddComponent<Rigidbody>();
+            Rigidbody rd = HitBook.GetComponent<Rigidbody>();
             rd.constraints = RigidbodyConstraints.FreezeAll;
 
         }
