@@ -93,7 +93,7 @@ public class StageManager : MonoBehaviour
         booksToClear--;
         if (booksToClear == 0)
         {
-            StageOver();
+            //StageOver();
         }
     }
 
