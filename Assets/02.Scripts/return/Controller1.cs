@@ -54,16 +54,12 @@ public class Controller1 : MonoBehaviour {
             if (ViveInput.GetPressDownEx(handRole, controllerButton))
             {
 
-
-                if (TriggerControll)
-
-                    if (handRole == HandRole.RightHand)
-                        dir = Direction.RIGHT;
+                if (handRole == HandRole.RightHand)
+                    dir = Direction.RIGHT;
                 if (handRole == HandRole.LeftHand)
                     dir = Direction.LEFT;
 
-
-
+                
 
 
                 if (StackManager.stack_list.Count == 0 &&
@@ -92,7 +88,9 @@ public class Controller1 : MonoBehaviour {
                     HitBook.GetComponent<Book>().Stack_on = false;
 
                     StackManager.stack_list.Remove(HitBook.transform);
+                        
                     //Tracking_move();
+                    
                 }
 
                 else
@@ -104,7 +102,15 @@ public class Controller1 : MonoBehaviour {
                         //(처리)
                         HitBook = reticlePoser.hitTarget;
                         Tracking = true;
-                        Tracking_move();
+                        //HitBook.GetComponent<Rigidbody>(). = true;
+
+                        Rigidbody rd = HitBook.GetComponent<Rigidbody>();
+                        if (rd != null)
+                        {
+                            rd.constraints = RigidbodyConstraints.FreezeAll;
+                        }
+                            StartCoroutine(Tracking_move());
+
                     }
                     else //집은 녀석이 스택에 들어가있다면 
                     {
@@ -161,6 +167,9 @@ public class Controller1 : MonoBehaviour {
 
                     HitBook.transform.rotation = Quaternion.Euler(0, 0, 90.0f);
 
+                    Rigidbody rd = HitBook.GetComponent<Rigidbody>();
+                    rd.constraints = RigidbodyConstraints.FreezeAll;
+
                 }
                 // 책장에 들어가있다면 
                 else if (HitBook.GetComponent<Book>().Snaped)
@@ -174,10 +183,14 @@ public class Controller1 : MonoBehaviour {
                     HitBook.GetComponent<Book>().other.SetActive(false);
                     HitBook.transform.SetParent(OriginParent);
 
+                    Rigidbody rd = HitBook.GetComponent<Rigidbody>();
+                    rd.constraints = RigidbodyConstraints.None;
                 }
                 else
                 {
                     HitBook.transform.SetParent(OriginParent);
+                    Rigidbody rd = HitBook.GetComponent<Rigidbody>();
+                    rd.constraints = RigidbodyConstraints.None;
                 }
 
                 HitBook = null;
@@ -185,6 +198,7 @@ public class Controller1 : MonoBehaviour {
             }
 
             Distance();
+           // HitBook.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -197,7 +211,7 @@ public class Controller1 : MonoBehaviour {
 
     }
 
-    public void Tracking_move()
+    public IEnumerator Tracking_move()
     {
         //책이 선택됫다. 
         if (HitBook)
@@ -207,7 +221,12 @@ public class Controller1 : MonoBehaviour {
             //책의 각도를 변경
             HitBook.transform.localRotation = Quaternion.Euler(Vector3.zero);
             //책을 이동 시킴.
-            StartCoroutine(Tracking_OBJ());
+            yield return StartCoroutine(Tracking_OBJ());
+
+            
+            Rigidbody rd = HitBook.AddComponent<Rigidbody>();
+            rd.constraints = RigidbodyConstraints.FreezeAll;
+
         }
 
     }
