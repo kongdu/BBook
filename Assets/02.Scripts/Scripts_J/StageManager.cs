@@ -34,6 +34,7 @@ public class StageManager : MonoBehaviour
     public float deadline = 20f;
     public float scorePerTime = 10;
     public float scorePerStage = 2;
+    public float correctToClear = 0.8f;
 
     public int stage = 1;
     public int booksToClear;
@@ -83,17 +84,14 @@ public class StageManager : MonoBehaviour
 
     public void ClearBook()
     {
-        if(_state == StageState.INGAME)
+        float stageScore = stage * scorePerStage;
+        float timeScore = currTime * scorePerTime;
+        score += stageScore + timeScore;
+        scoreText.text = score.ToString("0");
+        booksToClear--;
+        if (booksToClear == 0)
         {
-            float stageScore = stage * scorePerStage;
-            float timeScore = currTime * scorePerTime;
-            score += stageScore + timeScore;
-            scoreText.text = score.ToString("0");
-            booksToClear--;
-            if (booksToClear == 0)
-            {
-                StageClear();
-            }
+            StageOver();
         }
     }
     
@@ -131,19 +129,21 @@ public class StageManager : MonoBehaviour
         GameOver();
     }
 
-    public void StageClear()
+    public void StageOver(int correct)
     {
         StopCoroutine(timeRoutine);
-        _state = StageState.ENDGAME;
-        //GameManager에 score 전달
-        Debug.Log("클리어");
-    }
-
-    public void NextStage()
-    {
-        _state = StageState.INGAME;
-        stage++;
         currTime = deadline;
+        var correctScore = correct / booksToClear;
+        bool clear = correctScore >= correctToClear;    //state4의 isgameover에 그대로 전달.
+        if (clear)
+        {
+            //State4의 isGameOver에 clear 전달, GameManager에 score 전달. 전달방식은 상의
+            stage++;
+        }
+        else
+        {
+            //stage4의 isGameOver에 clear 전달
+        }
     }
 
     public void GameOver()

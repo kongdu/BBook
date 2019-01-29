@@ -34,29 +34,34 @@ public class BookManager : MonoBehaviour
 
 
     public List<Dictionary<string, object>> booksName = null;
-    public List<BookShelfLine> bookShelfLines = new List<BookShelfLine>();
+    public List<Book> books = new List<Book>();
 
     private void Awake()
     {
-        booksName = CSVReader.Read("LibraryEarthquakeBooksTitleCapitol");
+        booksName = CSVReader.Read("LibraryEarthquakeBooksName");
     }
 
     public void SetBooksProp(int colorVariety, int langVariety)
     {
-        foreach (var item in bookShelfLines)
+        foreach (var item in books)
         {
-            item.SetBooksColor(colors[Random.Range(0, colorVariety)]);
-            item.SetBooksName(Language[Random.Range(0, langVariety)]);
+            item.SetColor(colors[Random.Range(0, colorVariety)]);
+            var lang = Language[Random.Range(0, langVariety)];
+            var index = Random.Range(0, BookManager.Instance.titleVariety);
+            var list = BookManager.Instance.booksName[index];
+            item.SetText((list[lang]).ToString());
         }
     }
 
     public void buttontest()
     {
-        foreach (var item in bookShelfLines)
+        foreach (var item in books)
         {
-            item.SetBooksColor(colors[Random.Range(0, 4)]);
-            item.SetBooksName(Language[Random.Range(0, 2)]);
-            //item.MemoPos();
+            item.SetColor(colors[Random.Range(0, 4)]);
+            var str = Language[Random.Range(0, 2)];
+            var index = Random.Range(0, BookManager.Instance.titleVariety);
+            var list = BookManager.Instance.booksName[index];
+            item.SetText((list[str]).ToString());
         }
     }
 }
