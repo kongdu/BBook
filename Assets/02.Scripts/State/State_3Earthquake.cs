@@ -17,18 +17,20 @@ namespace Yeon
 
             Debug.Log("3번 시작");
             Debug.Log("3번");
-
             var quaker = GameObject.Find("Quake").GetComponent<Quaker>();
             var booksToDrop = (int)(StageManager.Instance.stageData[StageManager.Instance.stage]["DropBooks"]);
+            Debug.Log("지진 실행");
             quaker.StartQuake(booksToDrop, quaker.magnitude, quaker.duration);
-            StateMachine.ChangeState(GetNextState());
+            Debug.Log("지진 끝");
+            //StateMachine.ChangeState(GetNextState());
+            OnCompleted();
         }
 
         public override void Execute()
         {
             base.Execute();
 
-            Debug.Log("3번 실행중...");
+            //Debug.Log("3번 실행중...");
         }
 
         public override void Exit()

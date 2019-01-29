@@ -51,21 +51,27 @@ public class Quaker : MonoBehaviour
 
     public void StartQuake(int dropbooks, float magnitude, float duration)
     {
+        Debug.Log("StartCoroutine(QuakeSequence)");
         StartCoroutine(QuakeSequence(magnitude, duration, dropbooks));
     }
 
     private IEnumerator QuakeSequence(float magnitude, float time, int dropbooks)
     {
+        Debug.Log("audiosource.Play();");
         audiosource.Play();
-        yield return StartCoroutine(ShakingBookcase(magnitude));
-
+        //yield return StartCoroutine(ShakingBookcase(magnitude));
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(ShakingBookcase(magnitude));
+        Debug.Log("DustParticle.Play();");
         DustParticle.Play();
-        yield return new WaitWhile(() => DustParticle.isPlaying);
-
-        yield return StartCoroutine(ShakingBooks(magnitude));
-
-        yield return StartCoroutine(ShakingCam());
-
+        //yield return new WaitWhile(() => DustParticle.isPlaying);
+        Debug.Log("ShakingBooks(magnitude)");
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(ShakingBooks(magnitude));
+        Debug.Log("ShakingCam()");
+        yield return new WaitForSeconds(5f);
+        StartCoroutine(ShakingCam());
+        Debug.Log("DropingBooks(dropbooks)");
         yield return StartCoroutine(DropingBooks(dropbooks));
 
         OnCompleted();
