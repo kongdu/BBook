@@ -4944,6 +4944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1505186088}
   - component: {fileID: 1505186087}
+  - component: {fileID: 1505186089}
   m_Layer: 0
   m_Name: GameMgr
   m_TagString: Untagged
@@ -4978,6 +4979,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1505186089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505186086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb87198ba5ff8654784c32ad5abc0a98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 957852848}
+  showTime: {fileID: 441911139}
+  noticelPanel: {fileID: 1317122239}
+  playingPanel: {fileID: 1875326356}
+  timer: {fileID: 958159046}
+  winPanel: {fileID: 1428290168}
+  losePanel: {fileID: 1073868233}
 --- !u!1 &1509155724
 GameObject:
   m_ObjectHideFlags: 0
