@@ -14,12 +14,17 @@ public class Quaker : MonoBehaviour
     public int dropbooks = 5;
     public AudioSource audiosource;
     public AudioClip bookSound;
+
     //private float dropBooks;
+    [SerializeField]
+    private Transform slotTransform;
 
     private Vector3 originPos_bookcase;
     public List<Transform> AllBooksTransform;
     public List<GameObject> Slotlist;
+
     private List<Vector3> originPos_books;
+
     public Rigidbody[] AllbooksRigidBody;
 
     public GameObject AllBooks;
@@ -53,7 +58,10 @@ public class Quaker : MonoBehaviour
     public void StartQuake(int dropbooks, float magnitude, float duration)
     {
         Debug.Log("StartCoroutine(QuakeSequence)");
-
+        for (int i = 0; i < dropbooks; i++)
+        {
+            Slotlist.Add(GameObject.Instantiate(bookcasePreFab, slotTransform));
+        }
         StartCoroutine(QuakeSequence(magnitude, duration, dropbooks));
     }
 
@@ -144,11 +152,13 @@ public class Quaker : MonoBehaviour
             float randompower = Random.Range(140f, 240f);
 
             var booknum = AllbooksRigidBody[i].GetComponent<Book>();
-            //될지 안될지 모르겠음 이건 모두 꺼놓고 얘만 킬라고 한거임
             booknum.enabled = true;
             booknum.bookNumber = i;
+            Slotlist[i].transform.position = AllbooksRigidBody[i].position;
+            Slotlist[i].GetComponent<BoxCollider>().enabled = true;
             AllbooksRigidBody[i].AddForce(Vector3.forward * -randompower);
             AllbooksRigidBody[i].gameObject.layer = 10;
+
             //GameObject.Instantiate(bookcasePreFab, originPos_books[i], Quaternion.identity);
         }
 
