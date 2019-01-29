@@ -7,10 +7,9 @@ namespace Yeon
     //StateBase : State들의 부모
     //StateBase는 기본틀로 Enter / Execute / Exit / OnClick / GetNextState 를 만들고 버츄얼붙이기
     public enum GameResult { NONE, WIN, LOSE }
+
     public abstract class StateBase
     {
-       
-
         /// <summary>
         /// 시작할때 필요한 기능들 (유니티에서의 Start)
         /// </summary>
