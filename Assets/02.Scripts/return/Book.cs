@@ -60,9 +60,10 @@ public class Book : MonoBehaviour
             this.other = other.gameObject;
             //transform.SetParent(other.transform);
         }
-        if (other.CompareTag("bookshelf"))
+        if (other.CompareTag("Ground"))
         {
             bookAudio.Play();
+            Snaped = false;
         }
     }
 

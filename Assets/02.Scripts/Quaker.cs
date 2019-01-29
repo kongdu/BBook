@@ -84,8 +84,8 @@ public class Quaker : MonoBehaviour
         StartCoroutine(ShakingCam());
         Debug.Log("DropingBooks(dropbooks)");
         yield return StartCoroutine(DropingBooks(dropbooks));
-
         OnCompleted();
+        yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator ShakingBookcase(float magnitude)
@@ -155,8 +155,8 @@ public class Quaker : MonoBehaviour
             booknum.Add(AllbooksRigidBody[i].GetComponent<Book>());
             booknum[i].enabled = true;
             booknum[i].bookNumber = i;
-            Slotlist[randomvaluelist[i]].transform.position = AllbooksRigidBody[i].position;
-            Slotlist[randomvaluelist[i]].GetComponent<BoxCollider>().enabled = true;
+            Slotlist[i].transform.position = AllbooksRigidBody[randomvaluelist[i]].position;
+            Slotlist[i].GetComponent<BoxCollider>().enabled = true;
             AllbooksRigidBody[randomvaluelist[i]].AddForce(Vector3.forward * -randompower);
             AllbooksRigidBody[randomvaluelist[i]].gameObject.layer = 10;
 
