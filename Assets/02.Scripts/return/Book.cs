@@ -39,8 +39,13 @@ public class Book : MonoBehaviour
 
     public void SnapBook()
     {
-        transform.position = other.transform.position;
-        transform.rotation = other.transform.rotation;
+        if (other != null)
+        {
+            transform.position = other.transform.position;
+            transform.rotation = other.transform.rotation;
+
+            other.GetComponent<Book_Sh>().Book_Check = bookNumber;
+        }
     }
 
     private int chkscore;

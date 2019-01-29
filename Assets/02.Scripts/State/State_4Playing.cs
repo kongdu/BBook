@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 //4 플레이
 namespace Yeon
@@ -37,6 +38,7 @@ namespace Yeon
             }
             else
             {
+                // 책을 전부 꽃았을때의 조건도 추가해야할듯?
                 isGameOver = !isGameOver;
                 StateMachine.ChangeState(GetNextState());
             }
@@ -44,6 +46,19 @@ namespace Yeon
 
         public override void Exit()
         {
+            var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
+            var book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
+            book_list.AddRange(OBJS);
+
+            var ResultCnt = from slot in book_list
+                            where slot.GetComponent<Book_Sh>().shelfNum == slot.GetComponent<Book_Sh>().Book_Check
+                            select slot;
+
+            int count = ResultCnt.Count();
+
+
+
+
             base.Exit();
         }
 
