@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class StageManager : MonoBehaviour
 {
     private static StageManager _instance = null;
-
     public static StageManager Instance
     {
         get
@@ -32,7 +31,6 @@ public class StageManager : MonoBehaviour
 
     //밸런스 수치
     public float announceTime = 5f;
-
     public float deadline = 20f;
     public float scorePerTime = 10;
     public float scorePerStage = 2;
@@ -40,13 +38,13 @@ public class StageManager : MonoBehaviour
 
     public int stage = 1;
     public int booksToClear;
-
+    
     public List<Dictionary<string, object>> stageData = null;
 
-    private float currTime;
-    private float score = 0;
-    private Coroutine timeRoutine;
-    private StageState _state = StageState.PRESTAGE;
+    float currTime;
+    float score = 0;
+    Coroutine timeRoutine;
+    StageState _state = StageState.PRESTAGE;
 
     private void Awake()
     {
@@ -65,7 +63,7 @@ public class StageManager : MonoBehaviour
         StartCoroutine(GameStart());
     }
 
-    private IEnumerator GameStart()
+    IEnumerator GameStart()
     {
         currTime = deadline;
         booksToClear = (int)stageData[stage]["DropBooks"];
@@ -79,7 +77,7 @@ public class StageManager : MonoBehaviour
         StartStage();
     }
 
-    private void ShowAnnounce()
+    void ShowAnnounce()
     {
         announcePanel.SetActive(true);
     }
@@ -93,21 +91,21 @@ public class StageManager : MonoBehaviour
         booksToClear--;
         if (booksToClear == 0)
         {
-            StageOver(3);
+            StageOver();
         }
     }
-
+    
     /// <summary>
     /// 지진이펙트를 부르고, 거기에 떨어뜨릴 책의 수를 전달.
     /// </summary>
-    private IEnumerator CallEarthQuake()
+    IEnumerator CallEarthQuake()
     {
         //전달할 int는 (int)stageData[stage][DropBooks]
         yield return new WaitForSeconds(2f);
         Debug.Log("지진 끝");
     }
 
-    private void StartStage()
+    void StartStage()
     {
         currTime = deadline;
         timeText.text = currTime.ToString("00.00");
@@ -116,9 +114,9 @@ public class StageManager : MonoBehaviour
         timeRoutine = StartCoroutine(TimeCheck());
     }
 
-    private IEnumerator TimeCheck()
+    IEnumerator TimeCheck()
     {
-        if (_state == StageState.INGAME)
+        if(_state==StageState.INGAME)
         {
             while (currTime >= 0)
             {

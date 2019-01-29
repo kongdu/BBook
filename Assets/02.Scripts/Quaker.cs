@@ -22,7 +22,7 @@ public class Quaker : MonoBehaviour
     public Rigidbody[] AllbooksRigidBody;
 
     public GameObject AllBooks;
-    public GameObject bookshelf;
+    public GameObject bookcase;
 
     public event Action OnCompleted = () => { };
 
@@ -36,7 +36,7 @@ public class Quaker : MonoBehaviour
     private void Start()
     {
         audiosource = GetComponent<AudioSource>();
-        originPos_bookcase = bookshelf.transform.localPosition;
+        originPos_bookcase = bookcase.transform.localPosition;
         originPos_books = new List<Vector3>();
         AllbooksRigidBody = AllBooks.GetComponentsInChildren<Rigidbody>();
         AllBooksTransform = new List<Transform>();
@@ -76,7 +76,7 @@ public class Quaker : MonoBehaviour
         while (this.duration > 0)
         {
             Vector3 randomValue = Random.insideUnitSphere * magnitude;
-            bookshelf.transform.localPosition = Vector3.Lerp(bookshelf.transform.localPosition, originPos_bookcase + randomValue, 0.05f);
+            bookcase.transform.localPosition = Vector3.Lerp(bookcase.transform.localPosition, originPos_bookcase + randomValue, 0.05f);
             this.duration = this.duration - Time.deltaTime;
 
             yield return null;
