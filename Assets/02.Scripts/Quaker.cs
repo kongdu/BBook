@@ -22,7 +22,7 @@ public class Quaker : MonoBehaviour
     private Vector3 originPos_bookcase;
     public List<Transform> AllBooksTransform;
     public List<GameObject> Slotlist;
-
+    public List<Book> booknum = new List<Book>();
     private List<Vector3> originPos_books;
 
     public Rigidbody[] AllbooksRigidBody;
@@ -58,6 +58,7 @@ public class Quaker : MonoBehaviour
     public void StartQuake(int dropbooks, float magnitude, float duration)
     {
         Debug.Log("StartCoroutine(QuakeSequence)");
+        dropbooks = this.dropbooks;
         for (int i = 0; i < dropbooks; i++)
         {
             Slotlist.Add(GameObject.Instantiate(bookcasePreFab, slotTransform));
@@ -113,13 +114,13 @@ public class Quaker : MonoBehaviour
             yield return null;
         }
     }
-
+    public Camera mycam;
     private IEnumerator ShakingCam()
     {
         while (this.duration > 0)
         {
             Vector3 randomValue = Random.insideUnitSphere * magnitude;
-            Camera.main.transform.localPosition = Vector3.Lerp(Camera.main.transform.localPosition, Camera.main.transform.localPosition + randomValue, 0.05f);
+            Camera.main.transform.localPosition = Vector3.Lerp(mycam.transform.localPosition, Camera.main.transform.localPosition + randomValue, 0.05f);
             yield return null;
         }
     }
@@ -146,18 +147,18 @@ public class Quaker : MonoBehaviour
         //        }
         //    }
         //}
-
+        
         for (int i = 0; i < randomvaluelist.Count; i++)
         {
             float randompower = Random.Range(140f, 240f);
 
-            var booknum = AllbooksRigidBody[i].GetComponent<Book>();
-            booknum.enabled = true;
-            booknum.bookNumber = i;
-            Slotlist[i].transform.position = AllbooksRigidBody[i].position;
-            Slotlist[i].GetComponent<BoxCollider>().enabled = true;
-            AllbooksRigidBody[i].AddForce(Vector3.forward * -randompower);
-            AllbooksRigidBody[i].gameObject.layer = 10;
+            booknum.Add(AllbooksRigidBody[i].GetComponent<Book>());
+            booknum[i].enabled = true;
+            booknum[i].bookNumber = i;
+            Slotlist[randomvaluelist[i]].transform.position = AllbooksRigidBody[i].position;
+            Slotlist[randomvaluelist[i]].GetComponent<BoxCollider>().enabled = true;
+            AllbooksRigidBody[randomvaluelist[i]].AddForce(Vector3.forward * -randompower);
+            AllbooksRigidBody[randomvaluelist[i]].gameObject.layer = 10;
 
             //GameObject.Instantiate(bookcasePreFab, originPos_books[i], Quaternion.identity);
         }

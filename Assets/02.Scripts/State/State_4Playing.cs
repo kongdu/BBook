@@ -11,14 +11,19 @@ namespace Yeon
     {
         private float totalTime = 20f;
         public static bool isGameOver = false;
-
+        Quaker Quake = GameObject.Find("Quake").GetComponent<Quaker>();
+        List<GameObject> book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
         public override void Enter()
         {
             base.Enter();
             Debug.Log("4번");
             RefCtr.instance.noticelPanel.gameObject.SetActive(false);
             RefCtr.instance.playingPanel.gameObject.SetActive(true);
-
+            var Snapedlist = Quake.booknum;
+            for (int i = 0; i < Quake.dropbooks; i++)
+            {
+                Snapedlist[i].Snaped = false;
+            }
             Controller1.TriggerControll = true;
             //StateMachine.ChangeState(GetNextState());
             Debug.Log("4번 시작");
@@ -58,7 +63,7 @@ namespace Yeon
         public void Resultcounting()
         {
             //var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
-            var book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
+            
             //book_list.AddRange(OBJS);
 
             var ResultCnt = from slot in book_list

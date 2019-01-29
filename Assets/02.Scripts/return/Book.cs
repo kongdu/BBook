@@ -17,6 +17,7 @@ public class Book : MonoBehaviour
     public cakeslice.Outline _outline;
     public bool Stack_on = false;
     public bool outlineOn = false;
+    public AudioSource bookAudio;
 
     public GameObject other;
 
@@ -58,6 +59,10 @@ public class Book : MonoBehaviour
             StartCoroutine(Book_SNAP());
             this.other = other.gameObject;
             //transform.SetParent(other.transform);
+        }
+        if (other.CompareTag("bookshelf"))
+        {
+            bookAudio.Play();
         }
     }
 
