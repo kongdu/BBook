@@ -34,7 +34,7 @@ public class StageManager : MonoBehaviour
     public float announceTime = 5f;
 
     public float deadline = 20f;
-    public float scorePerTime = 10;
+    public float scorePerCorrectness = 100;
     public float scorePerStage = 2;
     public float correctToClear = 0.8f;
 
@@ -84,18 +84,18 @@ public class StageManager : MonoBehaviour
         announcePanel.SetActive(true);
     }
 
-    public void ClearBook()
-    {
-        float stageScore = stage * scorePerStage;
-        float timeScore = currTime * scorePerTime;
-        score += stageScore + timeScore;
-        scoreText.text = score.ToString("0");
-        booksToClear--;
-        if (booksToClear == 0)
-        {
-            //StageOver();
-        }
-    }
+    //public void ClearBook()
+    //{
+    //    float stageScore = stage * scorePerStage;
+    //    float timeScore = currTime * scorePerTime;
+    //    score += stageScore + timeScore;
+    //    scoreText.text = score.ToString("0");
+    //    booksToClear--;
+    //    if (booksToClear == 0)
+    //    {
+    //        StageOver();
+    //    }
+    //}
 
     /// <summary>
     /// 지진이펙트를 부르고, 거기에 떨어뜨릴 책의 수를 전달.
@@ -136,6 +136,7 @@ public class StageManager : MonoBehaviour
         StopCoroutine(timeRoutine);
         currTime = deadline;
         var correctScore = correct / booksToClear;
+        score += (correctScore * scorePerCorrectness) + (scorePerStage * stage);
         bool clear = correctScore >= correctToClear;    //state4의 isgameover에 그대로 전달.
         if (clear)
         {
@@ -144,7 +145,7 @@ public class StageManager : MonoBehaviour
         }
         else
         {
-            //stage4의 isGameOver에 clear 전달
+            //State4의 isGameOver에 clear 전달, GameManager에 score 전달. 전달방식은 상의
         }
     }
 
