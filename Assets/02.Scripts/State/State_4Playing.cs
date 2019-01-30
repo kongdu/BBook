@@ -15,7 +15,8 @@ namespace Yeon
         //Quaker Quake = GameObject.Find("Quake").GetComponent<Quaker>();
         private List<GameObject> book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
 
-        float count;
+        private float count;
+
         public override void Enter()
         {
             base.Enter();
@@ -34,30 +35,27 @@ namespace Yeon
             //}
             //StateMachine.ChangeState(GetNextState());
             Debug.Log("4번 시작");
-            
         }
 
         public override void Execute()
         {
             base.Execute();
             //Resultcounting();
-            
+
             //    Debug.Log("4번 실행중...");
             //    var score = GameObject.Find("ScoreCheck").GetComponent<ScoreCheck>();
 
             //if (StageManager.Instance.deadline > 0)
-            if(totalTime > 0)
+            if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
                 RefCtr.instance.timer.text = Mathf.Round(totalTime) + "";
                 //TO DO : 클리어조건 i) 빈공간 모두 채우면
-
-                
             }
             else
             {
                 isGameOver = !isGameOver;
-                
+
                 StateMachine.ChangeState(GetNextState());
             }
         }
@@ -65,7 +63,6 @@ namespace Yeon
         public override void Exit()
         {
             base.Exit();
-           
         }
 
         public override StateBase GetNextState()
@@ -89,9 +86,7 @@ namespace Yeon
 
             Debug.Log(count);
 
-           State_5GameResult.ResultScore(count);
-
-
+            State_5GameResult.ResultScore(count);
         }
     }
 }

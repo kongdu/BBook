@@ -122,7 +122,7 @@ public class Quaker : MonoBehaviour
         while (this.duration > 0)
         {
             Vector3 randomValue = Random.insideUnitSphere * magnitude;
-            Camera.main.transform.localPosition = Vector3.Lerp(mycam.transform.localPosition, Camera.main.transform.localPosition + randomValue, 0.05f);
+            mycam.transform.localPosition = Vector3.Lerp(mycam.transform.localPosition, Camera.main.transform.localPosition + randomValue, 0.05f);
             yield return null;
         }
     }
