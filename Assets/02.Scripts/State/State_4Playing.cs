@@ -15,12 +15,13 @@ namespace Yeon
         //Quaker Quake = GameObject.Find("Quake").GetComponent<Quaker>();
         private List<GameObject> book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
 
-        private float count;
+        private int MaxResultCnt;
 
         public override void Enter()
         {
             base.Enter();
             Debug.Log("4번");
+            MaxResultCnt = GameObject.Find("Quake").GetComponent<Quaker>().dropbooks;
             RefCtr.instance.noticelPanel.gameObject.SetActive(false);
             RefCtr.instance.playingPanel.gameObject.SetActive(true);
             //var Snapedlist = Quake.booknum;
@@ -51,11 +52,14 @@ namespace Yeon
                 totalTime -= Time.deltaTime;
                 RefCtr.instance.timer.text = Mathf.Round(totalTime) + "";
                 //TO DO : 클리어조건 i) 빈공간 모두 채우면
+                if (Book.SnapCount == MaxResultCnt)
+                {
+                    StateMachine.ChangeState(GetNextState());
+                }
             }
             else
             {
                 isGameOver = !isGameOver;
-
                 StateMachine.ChangeState(GetNextState());
             }
         }
@@ -74,19 +78,19 @@ namespace Yeon
 
         public void Resultcounting()
         {
-            var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
+            //var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
 
             //book_list.AddRange(OBJS);
 
-            var ResultCnt = from slot in OBJS//book_list
+            var ResultCnt = from slot in book_list
                             where slot.GetComponent<Book_Sh>().shelfNum == slot.GetComponent<Book_Sh>().Book_Check
                             select slot;
 
-            count = ResultCnt.Count();
+            
 
-            Debug.Log(count);
+            Debug.Log(ResultCnt.Count());
 
-            State_5GameResult.ResultScore(count);
+            State_5GameResult.ResultScore(ResultCnt.Count());
         }
     }
 }

@@ -22,9 +22,17 @@ public class Book : MonoBehaviour
     public AudioClip inputSound;
     public GameObject other;
 
+    public static int SnapCount = 0;
+
+    public bool plugged;
+
     private void Start()
     {
         _outline.enabled = false;
+    }
+    private void Awake()
+    {
+        plugged = true;
     }
 
     private IEnumerator Book_SNAP()
@@ -38,6 +46,13 @@ public class Book : MonoBehaviour
         Snaped = false;
         yield return null;
     }
+    private IEnumerator Plugged_corutine()
+    {
+
+        this.plugged = true;
+        yield return null;
+    }
+
 
     public void SnapBook()
     {
@@ -47,6 +62,8 @@ public class Book : MonoBehaviour
             transform.rotation = other.transform.rotation;
 
             other.GetComponent<Book_Sh>().Book_Check = bookNumber;
+            StartCoroutine(Plugged_corutine());
+            Yeon.RefCtr.instance.AnswerCountText.text = ++SnapCount + "/" + GameObject.Find("Quake").GetComponent<Quaker>().dropbooks;
         }
     }
 

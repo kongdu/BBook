@@ -88,7 +88,7 @@ public class Controller1 : MonoBehaviour
                 {
                     //집은 책이 스택에 들어가있지 않다면
                     if (!reticlePoser.hitTarget.GetComponent<Book>().Stack_on &&
-                        !reticlePoser.hitTarget.GetComponent<Book>().Snaped)
+                        !reticlePoser.hitTarget.GetComponent<Book>().Snaped && !reticlePoser.hitTarget.GetComponent<Book>().plugged)
                     {
                         //(처리)
                         HitBook = reticlePoser.hitTarget;

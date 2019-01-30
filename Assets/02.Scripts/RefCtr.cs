@@ -21,7 +21,10 @@ namespace Yeon
         public RectTransform winPanel = null; //상태5.1 이겼을때
         public RectTransform losePanel = null;  //상태5.2 졌을때
 
-        public Text ResultText = null; //점수 테스트
+        public Text ResultText = null;      // 결과 점수 측정 텍스트;
+        public Text AnswerCountText = null; // 꽃힌 책의 갯수 측정텍스트
+
+
 
         private void Awake()
         {

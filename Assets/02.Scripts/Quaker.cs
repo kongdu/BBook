@@ -156,6 +156,7 @@ public class Quaker : MonoBehaviour
 
             booknum.Add(AllbooksRigidBody[randomvaluelist[i]].GetComponent<Book>());
             booknum[i].enabled = true;
+            booknum[i].plugged = false;
             booknum[i].bookNumber = i;
             Slotlist[i].transform.position = AllbooksRigidBody[randomvaluelist[i]].position;
             Slotlist[i].GetComponent<Book_Sh>().shelfNum = i;

@@ -9,8 +9,6 @@ public class SoundMAnager : MonoBehaviour
 
     private void Start()
     {
-        bgms = new List<AudioClip>();
-
-        audioSource.clip = bgms[Random.Range(0, bgms.Count + 1)];
+        audioSource.clip = bgms[Random.Range(0, bgms.Count +1)];
     }
 }
