@@ -20,6 +20,7 @@ namespace Yeon
         public RectTransform winPanel = null; //상태5. 이겼을때
         public RectTransform losePanel = null;  //상태5. 졌을때
 
+        public Text ResultText = null; //점수 테스트 
         private void Awake()
         {
             if (instance == null)

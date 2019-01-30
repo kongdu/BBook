@@ -7,6 +7,29 @@ namespace Yeon
 {
     public class State_5GameResult : StateBase
     {
+
+        public static float Result;
+
+        public static void ResultScore(float Score)
+        {
+            Result = Score;
+            //맞춘 정답 확률 계산
+
+           float MaxResult = GameObject.Find("Quake").
+                GetComponent<Quaker>().dropbooks;
+
+            Result = (Result / MaxResult) * 100;
+        }
+
+        public static float Get_Score()
+        {
+            //게임매니져에 보낼 점수
+            return Result;
+
+        }
+
+
+
         public void ResultGame(bool win)
         {
             if (win)
@@ -25,10 +48,12 @@ namespace Yeon
         public override void Enter()
         {
             base.Enter();
+            RefCtr.instance.ResultText.text = State_5GameResult.Get_Score().ToString("") + "%";
             RefCtr.instance.playingPanel.gameObject.SetActive(false);
 
-            ResultGame(State_4Playing.isGameOver);
-            Debug.Log("5번");
+            //ResultGame(State_4Playing.isGameOver);
+            ResultGame(false);
+            Debug.Log("5번시작");
             //StateMachine.ChangeState(GetNextState());
         }
 
