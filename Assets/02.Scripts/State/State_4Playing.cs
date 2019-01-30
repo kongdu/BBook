@@ -9,7 +9,7 @@ namespace Yeon
 {
     public class State_4Playing : StateBase
     {
-        private float totalTime = 20f;
+        private float totalTime = 2000f;
         public static bool isGameOver = false;
 
         //Quaker Quake = GameObject.Find("Quake").GetComponent<Quaker>();
