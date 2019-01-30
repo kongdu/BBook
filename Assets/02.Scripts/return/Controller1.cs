@@ -207,10 +207,11 @@ public class Controller1 : MonoBehaviour
             //HitBook.transform.localRotation = Quaternion.Euler(Vector3.zero);
             HitBook.transform.localRotation = Quaternion.Euler(Vector3.up * -90.0f);
             //책을 이동 시킴.
-            yield return StartCoroutine(Tracking_OBJ());
+            StartCoroutine(Tracking_OBJ());
 
             Rigidbody rd = HitBook.GetComponent<Rigidbody>();
             rd.constraints = RigidbodyConstraints.FreezeAll;
+            yield return null;
         }
     }
 

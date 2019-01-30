@@ -84,8 +84,8 @@ public class Quaker : MonoBehaviour
         StartCoroutine(ShakingCam());
         Debug.Log("DropingBooks(dropbooks)");
         yield return StartCoroutine(DropingBooks(dropbooks));
+        yield return new WaitForSeconds(2f);
         OnCompleted();
-        yield return new WaitForSeconds(1f);
     }
 
     private IEnumerator ShakingBookcase(float magnitude)
@@ -114,7 +114,9 @@ public class Quaker : MonoBehaviour
             yield return null;
         }
     }
+
     public Camera mycam;
+
     private IEnumerator ShakingCam()
     {
         while (this.duration > 0)
@@ -147,19 +149,18 @@ public class Quaker : MonoBehaviour
         //        }
         //    }
         //}
-        
+
         for (int i = 0; i < randomvaluelist.Count; i++)
         {
             float randompower = Random.Range(140f, 240f);
 
-            booknum.Add(AllbooksRigidBody[i].GetComponent<Book>());
+            booknum.Add(AllbooksRigidBody[randomvaluelist[i]].GetComponent<Book>());
             booknum[i].enabled = true;
             booknum[i].bookNumber = i;
             Slotlist[i].transform.position = AllbooksRigidBody[randomvaluelist[i]].position;
-            Slotlist[i].GetComponent<BoxCollider>().enabled = true;
+            //Slotlist[i].GetComponent<BoxCollider>().enabled = true;
             AllbooksRigidBody[randomvaluelist[i]].AddForce(Vector3.forward * -randompower);
             AllbooksRigidBody[randomvaluelist[i]].gameObject.layer = 10;
-
             //GameObject.Instantiate(bookcasePreFab, originPos_books[i], Quaternion.identity);
         }
 
