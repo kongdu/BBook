@@ -33,7 +33,9 @@ public class Controller1 : MonoBehaviour
 
     private void Startbutton()
     {
-        if (reticlePoser.hitTarget.tag == "startbutton")
+        if (reticlePoser != null &&
+            reticlePoser.hitTarget != null &&
+            reticlePoser.hitTarget.tag == "startbutton")
             reticlePoser.hitTarget.SetActive(false);
     }
 
@@ -70,7 +72,7 @@ public class Controller1 : MonoBehaviour
 
                     HitBook = StackManager.Stack_PoP(HitBook);
 
-                    HitBook.transform.SetParent(HandTransform);
+                    //   HitBook.transform.SetParent(HandTransform);
 
                     HitBook.transform.position =
                                 HandTransform.position + HandTransform.transform.forward * 0.2f;
@@ -128,7 +130,10 @@ public class Controller1 : MonoBehaviour
                 //5. 스냅중이 라면 위치 각도 고정
                 dir = Direction.NONE;
 
-                if (!HitBook.GetComponent<Book>().Snaped &&
+                var book = HitBook.GetComponent<Book>();
+                if (book == null)
+                    return;
+                if (!book.Snaped &&
                     StackManager.stack_list.Count < 5)
                 {
                     if (StackManager.stack_list.Count <= 0)
@@ -151,7 +156,7 @@ public class Controller1 : MonoBehaviour
 
                     HitBook.GetComponent<Book>().Stack_on = true;
 
-                    HitBook.transform.SetParent(Stack_Direction_book);
+                    //HitBook.transform.SetParent(Stack_Direction_book);
 
                     HitBook.transform.localRotation = Quaternion.Euler(new Vector3(90.0f, 0, 180.0f));
 
@@ -159,7 +164,7 @@ public class Controller1 : MonoBehaviour
                     rd.constraints = RigidbodyConstraints.FreezeAll;
                 }
                 // 책장에 들어가있다면
-                else if (HitBook.GetComponent<Book>().Snaped)
+                else if (book.Snaped)
                 {
                     HitBook.GetComponent<Book>().Stack_on = false;
                     HitBook.GetComponent<Book>().Snaped = true;
@@ -168,14 +173,14 @@ public class Controller1 : MonoBehaviour
                     HitBook.GetComponent<Book>().SnapBook();
                     //책의 원래 위치 오브젝트
                     HitBook.GetComponent<Book>().other.SetActive(false);
-                    HitBook.transform.SetParent(OriginParent);
+                    //  HitBook.transform.SetParent(OriginParent);
 
                     Rigidbody rd = HitBook.GetComponent<Rigidbody>();
                     rd.constraints = RigidbodyConstraints.None;
                 }
                 else
                 {
-                    HitBook.transform.SetParent(OriginParent);
+                    //HitBook.transform.SetParent(OriginParent);
                     Rigidbody rd = HitBook.GetComponent<Rigidbody>();
                     rd.constraints = RigidbodyConstraints.None;
                 }
@@ -202,7 +207,7 @@ public class Controller1 : MonoBehaviour
         if (HitBook)
         {
             //책의 부모를 반대쪽 손으로 변경
-            HitBook.transform.SetParent(HandTransform);
+            //HitBook.transform.SetParent(HandTransform);
             //책의 각도를 변경
             //HitBook.transform.localRotation = Quaternion.Euler(Vector3.zero);
             HitBook.transform.localRotation = Quaternion.Euler(Vector3.up * -90.0f);

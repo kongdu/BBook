@@ -41,6 +41,7 @@ namespace Yeon
         public override StateBase GetNextState()
         {
             return new State_3Earthquake();
+            RefCtr.instance.showTime.gameObject.SetActive(false);
         }
     }
 }

@@ -362,8 +362,9 @@ MonoBehaviour:
   Stack_on: 0
   outlineOn: 0
   bookAudio: {fileID: 8141410913491822920}
-  inputSound: {fileID: 0}
+  inputSound: {fileID: 8300000, guid: f452bc8112f536f4188fcf461d0e1413, type: 3}
   other: {fileID: 0}
+  plugged: 0
 --- !u!114 &5216232551060182928
 MonoBehaviour:
   m_ObjectHideFlags: 0
