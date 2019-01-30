@@ -7,7 +7,7 @@ namespace Yeon
 {
     public class State_2AnswerScene : StateBase
     {
-        private float runningTime = 5f;
+        private float runningTime = 1f;
 
         public override void Enter()
         {

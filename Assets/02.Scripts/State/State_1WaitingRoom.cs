@@ -16,7 +16,6 @@ namespace Yeon
         public override void Execute()
         {
             base.Execute();
-            Debug.Log("1번 실행중...");
         }
 
         public override void Exit()

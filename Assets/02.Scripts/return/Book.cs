@@ -17,7 +17,9 @@ public class Book : MonoBehaviour
     public cakeslice.Outline _outline;
     public bool Stack_on = false;
     public bool outlineOn = false;
+    public AudioSource bookAudio;
 
+    public AudioClip inputSound;
     public GameObject other;
 
     private void Start()
@@ -50,14 +52,24 @@ public class Book : MonoBehaviour
 
     private int chkscore;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("bookshelf"))
+        if (other.collider.CompareTag("bookshelf"))
         {
-            chkscore = other.gameObject.GetComponent<Book_Sh>().shelfNum;
+            Debug.Log("bookshelf체크");
+            chkscore = other.gameObject.GetComponent<Book_Sh>().Book_Check;
+            chkscore = bookNumber;
             StartCoroutine(Book_SNAP());
+            bookAudio.clip = inputSound;
+            bookAudio.Play();
             this.other = other.gameObject;
             //transform.SetParent(other.transform);
+        }
+        else if (other.collider.CompareTag("Ground"))
+        {
+            Debug.Log("Ground체크");
+            bookAudio.Play();
+            Snaped = false;
         }
     }
 
@@ -83,7 +95,7 @@ public class Book : MonoBehaviour
 
     public void OutlinerOn()
     {
-        if(gameObject.layer == 10)
+        if (gameObject.layer == 10)
             _outline.enabled = true;
     }
 

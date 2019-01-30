@@ -12,26 +12,41 @@ namespace Yeon
         private float totalTime = 20f;
         public static bool isGameOver = false;
 
+        //Quaker Quake = GameObject.Find("Quake").GetComponent<Quaker>();
+        private List<GameObject> book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
+
+        private float count;
+
         public override void Enter()
         {
             base.Enter();
             Debug.Log("4번");
             RefCtr.instance.noticelPanel.gameObject.SetActive(false);
             RefCtr.instance.playingPanel.gameObject.SetActive(true);
-
+            //var Snapedlist = Quake.booknum;
+            foreach (var item in book_list)
+            {
+                item.GetComponent<BoxCollider>().enabled = true;
+            }
             Controller1.TriggerControll = true;
+            //for (int i = 0; i < Quake.dropbooks; i++)
+            //{
+            //    Snapedlist[i].Snaped = false;
+            //}
             //StateMachine.ChangeState(GetNextState());
             Debug.Log("4번 시작");
-            Resultcounting();
         }
 
         public override void Execute()
         {
             base.Execute();
-            Debug.Log("4번 실행중...");
-            var score = GameObject.Find("ScoreCheck").GetComponent<ScoreCheck>();
+            //Resultcounting();
 
-            if (StageManager.Instance.deadline > 0)
+            //    Debug.Log("4번 실행중...");
+            //    var score = GameObject.Find("ScoreCheck").GetComponent<ScoreCheck>();
+
+            //if (StageManager.Instance.deadline > 0)
+            if (totalTime > 0)
             {
                 totalTime -= Time.deltaTime;
                 RefCtr.instance.timer.text = Mathf.Round(totalTime) + "";
@@ -39,8 +54,8 @@ namespace Yeon
             }
             else
             {
-                // 책을 전부 꽃았을때의 조건도 추가해야할듯?
                 isGameOver = !isGameOver;
+
                 StateMachine.ChangeState(GetNextState());
             }
         }
@@ -52,21 +67,26 @@ namespace Yeon
 
         public override StateBase GetNextState()
         {
+            Debug.Log("4번끝");
+            Resultcounting();
             return new State_5GameResult();
         }
 
         public void Resultcounting()
         {
-            //var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
-            var book_list = GameObject.Find("Quake").GetComponent<Quaker>().Slotlist;
+            var OBJS = GameObject.FindGameObjectsWithTag("bookshelf");
+
             //book_list.AddRange(OBJS);
 
-            var ResultCnt = from slot in book_list
+            var ResultCnt = from slot in OBJS//book_list
                             where slot.GetComponent<Book_Sh>().shelfNum == slot.GetComponent<Book_Sh>().Book_Check
                             select slot;
 
-            int count = ResultCnt.Count();
+            count = ResultCnt.Count();
+
             Debug.Log(count);
+
+            State_5GameResult.ResultScore(count);
         }
     }
 }
