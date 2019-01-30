@@ -84,7 +84,7 @@ public class Quaker : MonoBehaviour
         StartCoroutine(ShakingCam());
         Debug.Log("DropingBooks(dropbooks)");
         yield return StartCoroutine(DropingBooks(dropbooks));
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         OnCompleted();
     }
 
@@ -133,7 +133,7 @@ public class Quaker : MonoBehaviour
 
         for (int k = 0; k < dropbooks; k++)
         {
-            randomvaluelist.Add(Random.Range(0, AllbooksRigidBody.Length + 1));
+            randomvaluelist.Add(Random.Range(0, AllbooksRigidBody.Length));
         }
         randomvaluelist.Sort((t1, t2) => { return Random.Range(-1, 2); });
 
@@ -158,6 +158,7 @@ public class Quaker : MonoBehaviour
             booknum[i].enabled = true;
             booknum[i].bookNumber = i;
             Slotlist[i].transform.position = AllbooksRigidBody[randomvaluelist[i]].position;
+            Slotlist[i].GetComponent<Book_Sh>().shelfNum = i;
             //Slotlist[i].GetComponent<BoxCollider>().enabled = true;
             AllbooksRigidBody[randomvaluelist[i]].AddForce(Vector3.forward * -randompower);
             AllbooksRigidBody[randomvaluelist[i]].gameObject.layer = 10;
