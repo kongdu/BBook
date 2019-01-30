@@ -19,6 +19,7 @@ public class Book : MonoBehaviour
     public bool outlineOn = false;
     public AudioSource bookAudio;
 
+    public AudioClip inputSound;
     public GameObject other;
 
     private void Start()
@@ -59,6 +60,8 @@ public class Book : MonoBehaviour
             chkscore = other.gameObject.GetComponent<Book_Sh>().Book_Check;
             chkscore = bookNumber;
             StartCoroutine(Book_SNAP());
+            bookAudio.clip = inputSound;
+            bookAudio.Play();
             this.other = other.gameObject;
             //transform.SetParent(other.transform);
         }
